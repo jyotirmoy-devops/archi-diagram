@@ -1,0 +1,62 @@
+<mxfile>
+  <diagram name="Strimzi-Kafka-Azure" id="kafka-azure-architecture">
+    <mxGraphModel dx="1470" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Oracle DB -->
+        <mxCell id="oracle-db" value="Oracle Database" style="shape=database;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="60" y="220" width="120" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Kafka Connect (Debezium) -->
+        <mxCell id="debezium" value="Kafka Connect (Debezium Oracle Source)" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="240" y="220" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Strimzi Kafka -->
+        <mxCell id="kafka" value="Apache Kafka (Strimzi Operator)" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="500" y="220" width="180" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Fluent Bit -->
+        <mxCell id="fluent-bit" value="Fluent Bit" style="shape=hexagon;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="750" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Fluentd -->
+        <mxCell id="fluentd" value="Fluentd" style="shape=hexagon;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="900" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Azure Storage -->
+        <mxCell id="azure-storage" value="Azure Blob Storage" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#cce5ff;strokeColor=#004a99;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="200" width="140" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Edges -->
+        <mxCell id="edge1" style="endArrow=block;html=1;" edge="1" parent="1" source="oracle-db" target="debezium">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge2" style="endArrow=block;html=1;" edge="1" parent="1" source="debezium" target="kafka">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge3" style="endArrow=block;html=1;" edge="1" parent="1" source="kafka" target="fluent-bit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge4" style="endArrow=block;html=1;" edge="1" parent="1" source="fluent-bit" target="fluentd">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge5" style="endArrow=block;html=1;" edge="1" parent="1" source="fluentd" target="azure-storage">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
